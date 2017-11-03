@@ -1,4 +1,4 @@
-#pragma config(Sensor, in1,    testbutton,     sensorPotentiometer)
+#pragma config(Sensor, in1,    testbutton,     sensorAnalog)
 #pragma config(Sensor, in4,    Pot1,           sensorPotentiometer)
 #pragma config(Sensor, in5,    Pot2,           sensorPotentiometer)
 #pragma config(Sensor, dgtl1,  goalLift,       sensorDigitalOut)
@@ -16,6 +16,16 @@ int threshold = 15;
 bool goalPosition = false;
 bool held = true;
 bool taskOneActive = false;
+
+void SelfTest()
+{
+	wait1Msec(1000);
+	motor[leftbackdrive] = 100;
+	motor[leftfrontdrive] = 100;
+	wait1Msec(1000);
+	motor[leftbackdrive] = 0;
+	motor[leftfrontdrive] = 0;
+}
 
 task One()
 {
@@ -96,8 +106,10 @@ task main()//blah
 			SensorValue(goalLift) = 0;
 			waitUntil(vexRT[Btn8U] == 0);
 		}
-		if (SensorValue[testbutton] > 1000) {
+		if (SensorValue[testbutton] < 5) {
 			// Do self-test regime
+			SelfTest();
+
 		}
 	}
 }
