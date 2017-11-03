@@ -4,7 +4,7 @@
 #pragma config(Sensor, dgtl1,  goalLift,       sensorDigitalOut)
 #pragma config(Sensor, dgtl2,  claw,           sensorDigitalOut)
 #pragma config(Motor,  port1,           leftfrontdrive, tmotorVex393_HBridge, openLoop)
-#pragma config(Motor,  port3,           rightfrontdrive, tmotorServoContinuousRotation, openLoop, reversed)
+#pragma config(Motor,  port3,           rightfrontdrive, tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port4,           armfront,      tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port5,           rightbackdrive, tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port8,           rightarmbottom, tmotorServoContinuousRotation, openLoop)
@@ -22,9 +22,44 @@ void SelfTest()
 	wait1Msec(1000);
 	motor[leftbackdrive] = 100;
 	motor[leftfrontdrive] = 100;
+	motor[rightbackdrive] = 100;
+	motor[rightfrontdrive] = 100;
 	wait1Msec(1000);
 	motor[leftbackdrive] = 0;
 	motor[leftfrontdrive] = 0;
+	motor[rightbackdrive] = 0;
+	motor[rightfrontdrive] = 0;
+	wait1Msec(1000);
+	motor[leftbackdrive] = -100;
+	motor[leftfrontdrive] = -100;
+	motor[rightbackdrive] = -100;
+	motor[rightfrontdrive] = -100;
+	wait1Msec(1000);
+	motor[leftbackdrive] = 0;
+	motor[leftfrontdrive] = 0;
+	motor[rightbackdrive] = 0;
+	motor[rightfrontdrive] = 0;
+	wait1Msec(1500);
+	motor[leftbackdrive] = 100;
+	motor[leftfrontdrive] = 100;
+	motor[rightbackdrive] = -100;
+	motor[rightfrontdrive] = -100;
+	wait1Msec(1000);
+	motor[leftbackdrive] = 0;
+	motor[leftfrontdrive] = 0;
+	motor[rightbackdrive] = 0;
+	motor[rightfrontdrive] = 0;
+	wait1Msec(1500)
+	motor[leftbackdrive] = -100;
+	motor[leftfrontdrive] = -100;
+	motor[rightbackdrive] = 100;
+	motor[rightfrontdrive] = 100;
+	wait1Msec(1000);
+	motor[leftbackdrive] = 0;
+	motor[leftfrontdrive] = 0;
+	motor[rightbackdrive] = 0;
+	motor[rightfrontdrive] = 0;
+
 }
 
 task One()
