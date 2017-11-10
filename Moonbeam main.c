@@ -17,9 +17,21 @@ bool goalPosition = false;
 bool held = true;
 bool taskOneActive = false;
 
+void Sounds()
+{
+playSoundFile("EstablishingLi.wav");
+wait1Msec(1000);
+playSoundFile("LinkageComp.wav");
+wait1Msec(500);
+playSoundFile("ProgramComp.wav");
+wait1Msec(1000);
+playSoundFile("ProgramReady");
+}
+
 void SelfTest()
 {
-	wait1Msec(1000);
+	playSoundFile("DiagnosticStart.wav");
+	wait1Msec(3000);
 	motor[leftbackdrive] = 100;
 	motor[leftfrontdrive] = 100;
 	motor[rightbackdrive] = 100;
@@ -49,7 +61,7 @@ void SelfTest()
 	motor[leftfrontdrive] = 0;
 	motor[rightbackdrive] = 0;
 	motor[rightfrontdrive] = 0;
-	wait1Msec(1500)
+	wait1Msec(1500);
 	motor[leftbackdrive] = -100;
 	motor[leftfrontdrive] = -100;
 	motor[rightbackdrive] = 100;
@@ -59,6 +71,12 @@ void SelfTest()
 	motor[leftfrontdrive] = 0;
 	motor[rightbackdrive] = 0;
 	motor[rightfrontdrive] = 0;
+	wait1Msec(1000);
+	SensorValue(goalLift) = 1;
+	wait1Msec(1000);
+	SensorValue(goalLift) = 0;
+	wait1Msec(1000);
+
 
 }
 
@@ -75,8 +93,11 @@ task One()
 	taskOneActive = false;
 }
 
+
+
 task main()//blah
 {
+	Sounds();
 	while(1) {
 		if(abs(vexRT[Ch3]) > threshold)         // If the left joystick is greater than or less than the threshold:
 		{
@@ -143,7 +164,10 @@ task main()//blah
 		}
 		if (SensorValue[testbutton] < 5) {
 			// Do self-test regime
+		playSoundFile("ButtonPress.wav");
 			SelfTest();
+				playSoundFile("DiagComplete.wav");
+
 
 		}
 	}
