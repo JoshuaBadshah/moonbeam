@@ -15,7 +15,7 @@
 int threshold = 15;
 bool goalPosition = false;
 bool held = true;
-bool taskOneActive = false;
+bool IsHoldingArms = false;
 
 void Sounds()
 {
@@ -80,9 +80,9 @@ void SelfTest()
 
 }
 
-task One()
+task HoldArms()
 {
-	taskOneActive = true;
+	IsHoldingArms = true;
 	while(SensorValue[Pot1] < 3000 && held == false)
 	{
 		motor[leftarmbottom] = 20;
@@ -90,12 +90,12 @@ task One()
 	}
 	motor[leftarmbottom] = 0;
 	motor[rightarmbottom] = 0;
-	taskOneActive = false;
+	IsHoldingArms = false;
 }
 
 
 
-task main()//blah
+task main()
 {
 	Sounds();
 	while(1) {
@@ -132,8 +132,8 @@ task main()//blah
 		}
 		else if(vexRT[Btn5U] == 0 && vexRT[Btn5D] == 0) {
 			held = false;
-			if (taskOneActive == false){
-				startTask(One);
+			if (IsHoldingArms == false){
+				startTask(HoldArms);
 			}
 		}
 		if (vexRT[Btn6U] == 1) {
