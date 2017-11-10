@@ -20,7 +20,7 @@ bool taskOneActive = false;
 void Sounds()
 {
 playSoundFile("EstablishingLi.wav");
-wait1Msec(2500);
+wait1Msec(20500);
 playSoundFile("LinkageComp.wav");
 wait1Msec(1500);
 playSoundFile("CmndCodes.wav");
