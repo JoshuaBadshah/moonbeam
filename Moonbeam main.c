@@ -20,12 +20,12 @@ bool taskOneActive = false;
 void Sounds()
 {
 playSoundFile("EstablishingLi.wav");
-wait1Msec(1000);
+wait1Msec(2500);
 playSoundFile("LinkageComp.wav");
-wait1Msec(500);
+wait1Msec(1500);
+playSoundFile("CmndCodes.wav");
+wait1Msec(3500);
 playSoundFile("ProgramComp.wav");
-wait1Msec(1000);
-playSoundFile("ProgramReady");
 }
 
 void SelfTest()
