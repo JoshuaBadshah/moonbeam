@@ -108,6 +108,9 @@ void armControlFromRightJoystick(){
 			shoulderPotFullyBackwardValue
 		);
 
+		// shoulderPercentFor
+		// desiredLeftShoulderPotValue =
+
 		desiredElbowPotValue = calculateNewDesiredPotValue(
 			desiredElbowPotValue,
 			fractionOfFullMovementTime,
@@ -130,13 +133,13 @@ void moveOrHoldPotsAtDesiredPositions() {
 	motor[leftShoulderMotor] = shoulderMotorPower;
 
 	// Same again for elbow motor
-	int elbowMotorError = desiredElbowPotValue - SensorValue[rightElbowPot];
-	int elbowMotorPower = elbowMotorError * 5;
+	//int elbowMotorError = desiredElbowPotValue - SensorValue[rightElbowPot];
+	//int elbowMotorPower = elbowMotorError * 5;
 
 	// Try to limit juddering - maybe try hysteresis?
-	if (elbowMotorPower > 100) elbowMotorPower = 100;
+	///if (elbowMotorPower > 100) elbowMotorPower = 100;
 
-	motor[rightElbowMotor] = elbowMotorPower;
+//	motor[rightElbowMotor] = elbowMotorPower;
 }
 
 task main()
@@ -154,5 +157,6 @@ task main()
 			tankDrive();
 		}
 		moveOrHoldPotsAtDesiredPositions();
+
 	}
 }
